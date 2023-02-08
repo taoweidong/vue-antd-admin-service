@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from apps.hello import views
+
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('hello/', include('hello.urls')),  # 这里加什么，那么在8000后面就需要添加什么
+    path("hello/", views.test),
 ]

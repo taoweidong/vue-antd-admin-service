@@ -41,8 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
-    'apps.hello',
-    'apps.world',
+    'apps.hello'
 ]
 # 全局设置，分页和API使用权限问题，指定管理员使用：
 # 设置权限策略：
