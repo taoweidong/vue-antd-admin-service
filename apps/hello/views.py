@@ -4,8 +4,12 @@ from django.shortcuts import render
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from apps.hello import models
+
 
 # Create your views here.
 
 def test(request):  # 函数视图
-    return HttpResponse("Hello world!")
+    # 查询所有数据
+    data = models.Student.objects.all()
+    return HttpResponse(data)
