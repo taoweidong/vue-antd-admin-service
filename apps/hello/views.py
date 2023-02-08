@@ -11,5 +11,6 @@ from apps.hello import models
 
 def test(request):  # 函数视图
     # 查询所有数据
+    print("页面请求进来了，查询数据")
     data = models.Student.objects.all()
     return HttpResponse(data)
