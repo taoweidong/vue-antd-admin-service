@@ -21,4 +21,9 @@ from apps.hello import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("hello/", views.test),
+    path('login', views.auth_login),
+    path('list', views.list),
+    path('goods', views.goods),
+    path('columns', views.columns),
+    path('work/activity', views.activity),
 ]
