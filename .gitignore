@@ -1,5 +1,5 @@
-/.idea
-/HelloDjangoProject/__pycache__/*.pyc
-/apps/__pycache__/*.pyc
-/apps/hello/__pycache__
-/apps/hello/migrations/__pycache__
+.idea
+*.pyc
+__pycache__
+venv
+.git
