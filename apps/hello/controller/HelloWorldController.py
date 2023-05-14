@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 import datetime
+import json
 
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
@@ -94,9 +95,12 @@ def list(request):
 
 @require_http_methods(['GET', 'POST'])
 def goods(request):
-    page = request.GET.get('currentPage', 1)
-    page_size = request.GET.get('pageSize', 10)
-    result = HelloWorldService.query_data(page, page_size)
+    # {'name': None, 'email': None, 'nickname': None, 'role': None, 'sex': '1,0', 'age': None, 'sort': 'updateDate', 'order': 'asc', 'currentPage': 1, 'pageSize': 10}
+    queryParams = request.GET.get('queryParams', "{}")
+    query_dict = json.loads(queryParams)
+    print(query_dict)
+
+    result = HelloWorldService.query_data(query_dict)
     return JsonResponse({"data": result, "code": 200, "message": "登录成功"})
 
 

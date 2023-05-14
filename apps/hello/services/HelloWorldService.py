@@ -13,8 +13,14 @@ class HelloWorldService(object):
         pass
 
     @classmethod
-    def query_data(cls, page, page_size):
-        data = StudentModel.objects.all().order_by('id')
+    def query_data(cls, query_dict):
+        page = query_dict.get('currentPage', 1)
+        page_size = query_dict.get('pageSize', 10)
+
+        sort = query_dict.get('sort', 'id')
+        order = query_dict.get('order', 'asc')
+
+        data = StudentModel.objects.all().order_by(("-" if str(order).strip().upper() == "DESC" else "") + sort)
         page_data = Paginator(data, page_size)  # 进行分页
         result_data = page_data.page(page)  # 返回对应页码
         # article_list.num_pages 总页码数，article_list.page_range 下标从 1 开始的页数范围迭代器，article_list.count表示所有页面的对象总数
